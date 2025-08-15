@@ -16,6 +16,7 @@ main#gallery {
     line-height: 100%;
     letter-spacing: 0em;
     color: base.$orange;
+		mix-blend-mode: difference;
   }
 
   .gallery {

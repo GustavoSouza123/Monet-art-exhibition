@@ -25,7 +25,7 @@ export default function Gallery() {
       },
     });
 
-		tl.addLabel('h1', 1)
+		tl.addLabel('h1', 0.5)
 
     SplitText.create('h1', {
       type: 'chars',
@@ -38,10 +38,6 @@ export default function Gallery() {
             yPercent: 100,
             duration: 1.5,
             stagger: 0.05,
-            // ease: CustomEase.create(
-            //   'custom',
-            //   'M0,0 C0.972,0 0.515,0.986 1,0.997 '
-            // ),
             ease: 'power2.inOut',
           },
           'h1'
@@ -61,7 +57,7 @@ export default function Gallery() {
         scale: 1,
         stagger: 0.5,
       },
-      '>h1'
+      '>-1h1'
     );
   });
 
