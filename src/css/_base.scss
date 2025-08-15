@@ -22,3 +22,29 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
+
+/* type system */
+
+@mixin title() {
+  font-family: $secondary-font;
+  font-size: 36px;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 100%;
+  letter-spacing: 0em;
+  color: $orange;
+}
+
+@mixin body() {
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 125%;
+  letter-spacing: 0em;
+}
+
+@mixin body-sm() {
+  @include body();
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+}

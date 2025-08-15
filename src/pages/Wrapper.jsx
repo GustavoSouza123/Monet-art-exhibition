@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { Outlet, useLocation } from 'react-router';
 import { ReactLenis, useLenis } from 'lenis/react';
+import Header from './Header';
 
 gsap.registerPlugin(useGSAP);
 
@@ -27,6 +28,7 @@ export default function Wrapper() {
   return (
     <>
       <ReactLenis root options={{ autoRaf: false, lerp: 0.1 }} ref={lenisRef} />
+			<Header />
       <Outlet />
     </>
   );

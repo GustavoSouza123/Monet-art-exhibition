@@ -1,86 +1,115 @@
 @use 'base';
 
-main#gallery {
+header {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+  justify-content: space-between;
+  padding: 0 40px;
 
-  h1 {
-    position: relative;
+  .title {
+    @include base.title();
+		opacity: 0;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    @include base.body-sm();
+
+    a {
+      color: #000;
+      text-decoration: none;
+
+			&:not(.active) {
+				opacity: .2;
+			}
+    }
+  }
+}
+
+main#gallery {
+  position: relative;
+	z-index: 999;
+  min-height: 100vh;
+
+  .title {
+    position: absolute;
     z-index: 999;
-    font-family: base.$secondary-font;
-    font-size: 88px;
-    font-weight: 500;
-    font-style: italic;
-    line-height: 100%;
-    letter-spacing: 0em;
-    color: base.$orange;
-		mix-blend-mode: difference;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    @include base.title();
   }
 
   .gallery {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    z-index: 99;
+		width: 100%;
+		height: 100%;
     display: flex;
 
     .wrapper {
       position: absolute;
-			overflow: hidden;
+      overflow: hidden;
 
-			img {
-				height: 100%;
-			}
+      img {
+        height: 100%;
+      }
 
       &:nth-child(1) {
         height: 426px;
-        top: 21.93vh;
-        left: 51.32vw;
+        // top: 19.93vh;
+        // left: 51.32vw;
         z-index: 1;
       }
 
       &:nth-child(2) {
         height: 312px;
-        top: 51.79vh;
-        left: 32.01vw;
-        z-index: 9;
+        // top: 51.79vh;
+        // left: 32.01vw;
+        z-index: 1;
       }
 
       &:nth-child(3) {
         height: 470px;
-        top: 5.38vh;
-        left: 13.5vw;
+        // top: 5.38vh;
+        // left: 13.5vw;
         z-index: 1;
       }
 
       &:nth-child(4) {
         height: 223px;
-        top: 73.36vh;
-        left: 53.7vw;
+        // top: 70.36vh;
+        // left: 53.7vw;
         z-index: 1;
       }
 
       &:nth-child(5) {
         height: 237px;
-        top: 51.79vh;
-        left: 73.02vw;
+        // top: 51.79vh;
+        // left: 73.02vw;
         z-index: 9;
       }
 
       &:nth-child(6) {
         height: 286px;
-        top: 59.71vh;
-        left: 2.65vw;
+        // top: 59.71vh;
+        // left: 2.65vw;
         z-index: 1;
       }
 
       &:nth-child(7) {
         height: 324px;
-        top: 6.85vh;
-        left: 75.66vw;
+        // top: 6.85vh;
+        // left: 75.66vw;
         z-index: 1;
       }
     }
