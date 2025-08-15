@@ -1,0 +1,60 @@
+{
+  "artworks": [
+    {
+      "name": "Impression, Rising Sun",
+      "imageFile": "impression-sunrise.png",
+      "description": "Around the month of November in 1872, Claude Monet (1840-1926) completed this work in just a few hours, in his hotel room overlooking the Port of Le Havre.<br>Monet's painting bears witness to the importance of his meeting with Boudin, and his discovery of the work of Turner. It seeks to render an atmosphere rather than a naturalist view. His stroke is therefore fragmented, the industrial port is steeped in mist, and contours are softened.<br>The horizon is positioned high in the image. On both sides, the quay's frame the central vista, which opens onto the basin of the River Eure. In the foreground, the eye is drawn to a deep blue boat and a vibrant orange sun. These two complementary colors give the work a contrasted balance.<br>The critic Louis Leroy used the title Impression to mock it, unintentionally naming the entire Impressionist movement.",
+      "year": "1872",
+      "medium": "Oil on canvas",
+      "dimensions": { "height": "43", "width": "63" }
+    },
+    {
+      "name": "Woman with a Parasol - Madame Monet and Her Son",
+      "imageFile": "woman-with-a-parasol.png",
+      "description": "With Manet's assistance, Monet found lodging in suburban Argenteuil in late 1871, a move that initiated one of the most fertile phases of his career. Impressionism evolved in the late 1860s from a desire to create full–scale, multi–figure depictions of ordinary people in casual outdoor situations. At its purest, impressionism was attuned to landscape painting, a subject Monet favored. In _Woman with a Parasol – Madame Monet and Her Son_, his skill as a figure painter is equally evident. Contrary to the artificial conventions of academic portraiture, Monet delineated the features of his sitters as freely as their surroundings. The spontaneity and naturalness of the resulting image were praised when it appeared in the second impressionist exhibition in 1876.<br>_Woman with a Parasol_ was painted outdoors, probably in a single session of several hours' duration. The artist intended the work to convey the feeling of a casual family outing rather than a formal portrait, and used pose and placement to suggest that his wife and son interrupted their stroll while he captured their likenesses. The brevity of the moment portrayed here is conveyed by a repertory of animated brushstrokes of vibrant color, hallmarks of the style Monet was instrumental in forming. Bright sunlight shines from behind Camille to whiten the top of her parasol and the flowing cloth at her back, while colored reflections from the w below touch her front with yellow.",
+      "year": "1875",
+      "medium": "Oil on canvas",
+      "dimensions": { "height": "", "width": "" }
+    },
+    {
+      "name": "Rouen Cathedral, West Façade, Sunlight",
+      "imageFile": "rouen-cathedral.png",
+      "description": "Monet painted Normandy’s famous Rouen Cathedral over thirty times. Now scattered in private and public collections across the world from Tokyo to Los Angeles, each canvas captures the exterior of the cathedral at a different time of day and in different weather, tracking the shifting light across the stones of the medieval structure.<br>Throughout his career Monet tended to repeatedly paint the same subjects. From the 1890s he started to actively paint in series, both in cities and the countryside: haystacks in the field near his house at Giverny; a line of poplars along the nearby Epte River; the Houses of Parliament in London; the churches and palaces of Venice; the Japanese bridge in his garden; and the multiple waterlily paintings. Each one is an exercise in capturing the atmosphere between Monet and his subject, the effect of different weather conditions and light, humidity, brightness, shadow, and haze. ",
+      "year": "1894",
+      "medium": "Oil on canvas",
+      "dimensions": { "height": "100", "width": "66" }
+    },
+    {
+      "name": "The Water-Lily Pond",
+      "imageFile": "the-water-lily-pond.png",
+      "description": "In 1883, Monet moved to Giverny, where he lived until his death. There, on his estate, he created a water garden \"for the purpose of cultivating aquatic plants,\" over which he built a Japanese-style arched bridge.<br>In 1899, when the garden was already mature, the painter created 17 views of the motif under different lighting conditions. Surrounded by lush foliage, the bridge is seen here from the lake itself, amid an artistic arrangement of reeds and willow leaves.",
+      "year": "1899",
+      "medium": "Oil on canvas",
+      "dimensions": { "height": "93", "width": "88" }
+    },
+    {
+      "name": "Haystacks, midday",
+      "imageFile": "haystacks.png",
+      "description": "This is one of eight paintings of stacks of wheat that Monet began in the late summer and. autumn of 1890.1 Of these eight paintings, six, including the Australian National Gallery's picture, share a similar format of two stacks with the nearer one at the right silhouetted against a field, a band of trees, hills and sky.2 The stacks were in a field adjoining Monet's own property at Giverny, a village in the Seine Valley about 80 kilometres north-west of Paris.3 Painting the stacks 'contre-jour', against the sun, Monet would have been facing south-west over the field to the hills that rise on the far bank of the Seine between Port Villez and Le Grand Val.<br>Monet continued to paint the stacks of wheat in his neighbour's field through the winter of 1890-91, producing seventeen more canvases of the stacks seen singly or in pairs, so that by the spring of 1891 he had twenty-five paintings of the same subject. To this might be added a further five paintings of stacks made in the autumn and winter of 1888-894, bringing the total number of paintings in similar configuration to at least thirty.<br>From these Monet chose fifteen (although this does not seem to have included the Gallery's painting) as the centrepiece of an exhibition of twenty-two recent paintings that opened at Durand-Ruel's gallery on 4 May 1891.5 The exhibition was a spectacular critical and financial success. Almost the entire series of paintings of stacks was sold within the year, with the majority being bought by American collectors. Mrs Berthe Honoré Palmer of Chicago, the wife of wealthy real estate magnate Potter Palmer, bought no less than nine from the series—including the Canberra painting—either directly from the artist or through Monet's dealers",
+      "year": "1890",
+      "medium": "Oil on canvas",
+      "dimensions": { "height": "65", "width": "100" }
+    },
+    {
+      "name": "Beach at Pourville",
+      "imageFile": "beach-at-pourville.png",
+      "description": "Although Monet is probably best known for his horticultural paintings, he produced many works influenced by his surroundings. The artist spent the winter of 1882 in Pourville. He enjoyed the time spent there and returned with his family the following summer. The Beach in Pourville is one of the paintings he created there.<br>The painting depicts the deserted beach with cliffs at either end. About two thirds of the painting is taken up by sea and sky.",
+      "year": "1882",
+      "medium": "Oil on canvas",
+      "dimensions": { "height": "60", "width": "73" }
+    },
+    {
+      "name": "Boulevard des Capucines",
+      "imageFile": "boulevard-des-capucines.png",
+      "description": "Today, we view this celebrated painting by Claude Monet as a convincing depiction of a bustling Paris boulevard as it might appear from high above, seen through the cold, damp air of winter. Typically Impressionist are the blue shadows and bold, individual brush strokes used to indicate pedestrians whose forms become blurred in motion.<br>In the first Impressionist exhibition of 1874, where either this painting or another similar version was exhibited, such marks were described by a critic accustomed to precise outlines and controlled brushwork as \"black tongue-lickings.\" Most of the general public agreed. The pink dabs of paint at center right in the painting are hard to identify but are most likely balloons.",
+      "year": "1873",
+      "medium": "Oil on canvas",
+      "dimensions": { "height": "80", "width": "60" }
+    }
+  ]
+}
