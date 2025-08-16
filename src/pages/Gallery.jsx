@@ -58,12 +58,12 @@ export default function Gallery() {
       {
         clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
         scale: 1.5,
-        stagger: 0.5,
+        stagger: 0.05, // 0.5
       },
       {
         clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
         scale: 1,
-        stagger: 0.5,
+        stagger: 0.05, // 0.5
       },
       '>-1'
     );
@@ -84,19 +84,35 @@ export default function Gallery() {
         duration: 2,
         ease: 'power3.inOut',
       },
-      '>'
+      'title'
     );
 
-    tl.set('main#gallery', { height: '1564px' });
-    window.innerHeight = 1564;
+    tl.to('main#gallery', { padding: '100px 0', duration: 2 }, 'title');
+    tl.to('.image1', { x: '36.51vw', y: (1564 * 21.74) / 100, height: '256px', duration: 2 }, 'title');
+    tl.to('.image2', { x: '40px', y: (1564 * 53.07) / 100, height: '634px', duration: 2 }, 'title');
+    tl.to('.image3', { x: '60.85vw', y: (1564 * 53.07) / 100, height: '223px', duration: 2 }, 'title');
+    tl.to('.image4', { x: '70.37vw', y: (1564 * 11.64) / 100, height: '316px', duration: 2 }, 'title');
+    tl.to('.image5', { x: '48.68vw', y: (1564 * 86.51) / 100, height: '211px', duration: 2 }, 'title');
+    tl.to('.image6', { x: '2.65vw', y: (1564 * 4.67) / 100, height: '267px', duration: 2 }, 'title');
+    tl.to('.image7', { x: '82.54vw', y: (1564 * 67.33) / 100, height: '250px', duration: 2 }, 'title');
 
-    tl.to('.image1', { x: '36.51vw', y: (window.innerHeight * 21.74) / 100, duration: 2 }, '>');
-    tl.to('.image2', { x: '40px', y: (window.innerHeight * 53.07) / 100, duration: 2 }, '<');
-    tl.to('.image3', { x: '60.85vw', y: (window.innerHeight * 53.07) / 100, duration: 2 }, '<');
-    tl.to('.image4', { x: '70.37vw', y: (window.innerHeight * 11.64) / 100, duration: 2 }, '<');
-    tl.to('.image5', { x: '48.68vw', y: (window.innerHeight * 86.51) / 100, duration: 2 }, '<');
-    tl.to('.image6', { x: '2.65vw', y: (window.innerHeight * 4.67) / 100, duration: 2 }, '<');
-    tl.to('.image7', { x: '82.54vw', y: (window.innerHeight * 67.33) / 100, duration: 2 }, '<');
+		 SplitText.create('.mask', {
+      type: 'lines',
+      autoSplit: true,
+      mask: 'lines',
+      onSplit: (self) => {
+        tl.from(
+          self.lines,
+          {
+            yPercent: 100,
+            duration: 1,
+            stagger: 0.1,
+            ease: 'power2.out',
+          },
+          'title+0.5'
+        );
+      },
+    });
   });
 
   function ignore() {
@@ -135,7 +151,9 @@ export default function Gallery() {
 
   return (
     <main id="gallery">
-      <div className="title">Claude Monet</div>
+      <div className="top">
+        <div className="title">Claude Monet</div>
+      </div>
 
       <div
         className="gallery"
@@ -146,6 +164,15 @@ export default function Gallery() {
             <img src={artwork.imageFile} alt={artwork.name} />
           </div>
         ))}
+      </div>
+
+      <div className="bottom">
+        <div className="nav">
+          <div className="list mask">List</div>
+          <div className="span mask">/</div>
+          <div className="grid mask active">Grid</div>
+        </div>
+        <div className="copyright">Made by Gustavo Souza</div>
       </div>
     </main>
   );

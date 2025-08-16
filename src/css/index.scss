@@ -14,7 +14,7 @@ header {
 
   .title {
     @include base.title();
-		opacity: 0;
+    opacity: 0;
   }
 
   .nav {
@@ -26,35 +26,40 @@ header {
     a {
       color: #000;
       text-decoration: none;
+      mix-blend-mode: difference;
 
-			&:not(.active) {
-				opacity: .2;
-			}
+      &:not(.active) {
+        opacity: 0.2;
+      }
     }
   }
 }
 
 main#gallery {
   position: relative;
-	z-index: 999;
-  min-height: 100vh;
+  z-index: 99;
 
-  .title {
+  .top {
     position: absolute;
     z-index: 999;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    mix-blend-mode: difference;
-    @include base.title();
+    width: 100%;
+    height: 100vh;
+
+    .title {
+      position: fixed;
+      z-index: 999;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @include base.title();
+    }
   }
 
   .gallery {
-    position: absolute;
-    z-index: 99;
-		width: 100%;
-		height: 100%;
+    width: 100%;
+    height: 1564px;
     display: flex;
+    box-sizing: content-box;
 
     .wrapper {
       position: absolute;
@@ -112,6 +117,41 @@ main#gallery {
         // left: 75.66vw;
         z-index: 1;
       }
+    }
+  }
+
+  .bottom {
+    position: fixed;
+    z-index: 999;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      @include base.body-sm();
+
+      & > div:not(.active) {
+        opacity: 0.2;
+      }
+
+      .list,
+      .grid {
+        cursor: pointer;
+      }
+    }
+
+    .copyright {
+      @include base.body-sm();
+      text-transform: none;
+      opacity: 0.2;
     }
   }
 }

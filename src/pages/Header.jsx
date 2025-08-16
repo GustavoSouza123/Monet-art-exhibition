@@ -16,10 +16,10 @@ export default function Gallery() {
       <div className="title">Claude Monet</div>
 
       <div className="nav">
-        <NavLink to="" className="gallery">
+        <NavLink to="" className="gallery mask">
           Gallery <span>({artworks.length})</span>
         </NavLink>
-        <NavLink to="info" className="info">
+        <NavLink to="info" className="info mask">
           Info
         </NavLink>
       </div>
