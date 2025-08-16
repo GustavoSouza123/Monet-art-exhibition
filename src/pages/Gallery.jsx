@@ -8,19 +8,20 @@ gsap.registerPlugin(ScrollTrigger, SplitText, CustomEase, ScrambleTextPlugin);
 
 export default function Gallery() {
   const { artworks } = data;
-  const plane1 = useRef(null);
-  const plane2 = useRef(null);
-  const plane3 = useRef(null);
-  const easing = 0.08;
-  const speed = 0.01;
-  let requestAnimationFrameId = null;
-  let xForce = 0;
-  let yForce = 0;
+  // const plane1 = useRef(null);
+  // const plane2 = useRef(null);
+  // const plane3 = useRef(null);
+  // const easing = 0.08;
+  // const speed = 0.01;
+  // let requestAnimationFrameId = null;
+  // let xForce = 0;
+  // let yForce = 0;
 
   useGSAP(() => {
     let tl = gsap.timeline({
       defaults: {
-        duration: 4,
+        // duration: 4,
+        duration: 1,
         ease: CustomEase.create('custom', 'M0,0 C0.907,0.183 0.117,0.984 1,0.997'),
       },
     });
@@ -44,8 +45,9 @@ export default function Gallery() {
           self.chars,
           {
             yPercent: 100,
-            duration: 1.5,
-            stagger: 0.05,
+            // duration: 1.5,
+            duration: 0.1,
+            // stagger: 0.05,
             ease: 'power2.inOut',
           },
           '0.5'
@@ -81,22 +83,18 @@ export default function Gallery() {
         top: 0,
         left: 0,
         transform: 'none',
-        duration: 2,
+        // duration: 2,
+        duration: 0.1,
         ease: 'power3.inOut',
       },
       'title'
     );
 
-    tl.to('main#gallery', { padding: '100px 0', duration: 2 }, 'title');
-    tl.to('.image1', { x: '36.51vw', y: (1564 * 21.74) / 100, height: '256px', duration: 2 }, 'title');
-    tl.to('.image2', { x: '40px', y: (1564 * 53.07) / 100, height: '634px', duration: 2 }, 'title');
-    tl.to('.image3', { x: '60.85vw', y: (1564 * 53.07) / 100, height: '223px', duration: 2 }, 'title');
-    tl.to('.image4', { x: '70.37vw', y: (1564 * 11.64) / 100, height: '316px', duration: 2 }, 'title');
-    tl.to('.image5', { x: '48.68vw', y: (1564 * 86.51) / 100, height: '211px', duration: 2 }, 'title');
-    tl.to('.image6', { x: '2.65vw', y: (1564 * 4.67) / 100, height: '267px', duration: 2 }, 'title');
-    tl.to('.image7', { x: '82.54vw', y: (1564 * 67.33) / 100, height: '250px', duration: 2 }, 'title');
+    tl.to('main#gallery', { padding: '100px 0', /*duration: 2*/ duration: 0.1 }, 'title');
+    imagesGrid(tl);
+    // imagesList();
 
-		 SplitText.create('.mask', {
+    SplitText.create('.mask', {
       type: 'lines',
       autoSplit: true,
       mask: 'lines',
@@ -149,6 +147,51 @@ export default function Gallery() {
     // };
   }
 
+  const imagesList = () => {
+    // const numCols = 8;
+    // const colWidth = (window.innerWidth - 80) / numCols - 40;
+    // const getGridWidth = (cols) => {
+    //   return colWidth * cols + 40 * (numCols - 1);
+    // };
+    // const widths = [getGridWidth(6), getGridWidth(4), getGridWidth(2), getGridWidth(8), getGridWidth(4), getGridWidth(6), getGridWidth(4)];
+
+    const heights = [470, 895, 800, 872, 642, 512, 1084];
+    const gap = 50;
+    const galleryHeight = heights.reduce((acc, cur) => acc + cur, 0) + gap * (heights.length - 1);
+
+    gsap.to('main .gallery', { height: galleryHeight + 'px', alignItems: 'center', gap: '100px' });
+    // gsap.to('main .gallery', { height: '3000px' });
+
+    document.querySelectorAll('.image').forEach((image, index) => {
+      gsap.to(image, { height: heights[index], x: 0, y: 0 });
+      // gsap.to(image, { width: widths[index], height: '100%', x: 0, y: 0 });
+      // gsap.to(image.firstChild, { width: '100%', height: 'auto' });
+    });
+  };
+
+  const imagesGrid = (timeline) => {
+    // const duration = 2;
+    const duration = 0.1;
+
+    const tl =
+      timeline ||
+      gsap.timeline({
+        defaults: {
+          duration,
+          ease: CustomEase.create('custom', 'M0,0 C0.907,0.183 0.117,0.984 1,0.997'),
+        },
+      });
+
+		// TODO: calculate images widths based on grids width (see imageList() function)
+    tl.to('.image1', { x: '36.51vw', y: (1564 * 21.74) / 100, height: '256px', duration }, 'title');
+    tl.to('.image2', { x: '40px', y: (1564 * 53.07) / 100, height: '634px', duration }, 'title');
+    tl.to('.image3', { x: '60.85vw', y: (1564 * 53.07) / 100, height: '223px', duration }, 'title');
+    tl.to('.image4', { x: '70.37vw', y: (1564 * 11.64) / 100, height: '316px', duration }, 'title');
+    tl.to('.image5', { x: '48.68vw', y: (1564 * 86.51) / 100, height: '211px', duration }, 'title');
+    tl.to('.image6', { x: '2.65vw', y: (1564 * 4.67) / 100, height: '267px', duration }, 'title');
+    tl.to('.image7', { x: '82.54vw', y: (1564 * 67.33) / 100, height: '250px', duration }, 'title');
+  };
+
   return (
     <main id="gallery">
       <div className="top">
@@ -160,7 +203,7 @@ export default function Gallery() {
         // onMouseMove={(e) => manageMouseMove(e)}
       >
         {artworks.map((artwork, index) => (
-          <div className={`wrapper image${index + 1}`} key={index} ref={plane1}>
+          <div className={`image image${index + 1}`} key={index}>
             <img src={artwork.imageFile} alt={artwork.name} />
           </div>
         ))}
@@ -168,9 +211,13 @@ export default function Gallery() {
 
       <div className="bottom">
         <div className="nav">
-          <div className="list mask">List</div>
+          <div className="list mask" onClick={() => imagesList()}>
+            List
+          </div>
           <div className="span mask">/</div>
-          <div className="grid mask active">Grid</div>
+          <div className="grid mask active" onClick={() => imagesGrid()}>
+            Grid
+          </div>
         </div>
         <div className="copyright">Made by Gustavo Souza</div>
       </div>
