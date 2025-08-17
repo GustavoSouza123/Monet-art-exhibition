@@ -90,8 +90,8 @@ export default function Gallery() {
       'title'
     );
 
-    tl.to('main#gallery', { padding: '100px 0', /*duration: 2*/ duration: 0.1 }, 'title');
-    imagesGrid(tl);
+    tl.to('main#gallery', { padding: '100px 0', /*duration: 0.1*/ duration: 2 }, 'title');
+    // imagesGrid(tl);
     // imagesList();
 
     SplitText.create('.mask', {
@@ -147,7 +147,22 @@ export default function Gallery() {
     // };
   }
 
-  const imagesList = () => {
+  const imagesList = (timeline) => {
+    document.querySelector('.nav .grid').classList.remove('active');
+    document.querySelector('.nav .list').classList.toggle('active');
+
+    // const duration = 2;
+    const duration = 1;
+
+    const tl =
+      timeline ||
+      gsap.timeline({
+        defaults: {
+          duration,
+          ease: CustomEase.create('custom', 'M0,0 C0.907,0.183 0.117,0.984 1,0.997'),
+        },
+      });
+
     // const numCols = 8;
     // const colWidth = (window.innerWidth - 80) / numCols - 40;
     // const getGridWidth = (cols) => {
@@ -159,19 +174,22 @@ export default function Gallery() {
     const gap = 50;
     const galleryHeight = heights.reduce((acc, cur) => acc + cur, 0) + gap * (heights.length - 1);
 
-    gsap.to('main .gallery', { height: galleryHeight + 'px', alignItems: 'center', gap: '100px' });
-    // gsap.to('main .gallery', { height: '3000px' });
+    tl.to('main .gallery', { height: galleryHeight + 'px', display: 'flex', alignItems: 'center', gap: '100px' }, 'image');
+    // tl.to('main .gallery', { height: '3000px' }, 'image');
 
     document.querySelectorAll('.image').forEach((image, index) => {
-      gsap.to(image, { height: heights[index], x: 0, y: 0 });
-      // gsap.to(image, { width: widths[index], height: '100%', x: 0, y: 0 });
-      // gsap.to(image.firstChild, { width: '100%', height: 'auto' });
+      tl.to(image, { position: 'static', height: heights[index], x: 0, y: 0 }, 'image');
+      // tl.to(image, { width: widths[index], height: '100%', x: 0, y: 0 }, 'image');
+      // tl.to(image.firstChild, { width: '100%', height: 'auto' }, 'image');
     });
   };
 
   const imagesGrid = (timeline) => {
+    document.querySelector('.nav .list').classList.remove('active');
+    document.querySelector('.nav .grid').classList.toggle('active');
+
     // const duration = 2;
-    const duration = 0.1;
+    const duration = 1;
 
     const tl =
       timeline ||
@@ -182,7 +200,10 @@ export default function Gallery() {
         },
       });
 
-		// TODO: calculate images widths based on grids width (see imageList() function)
+    tl.to('main .gallery', { height: '1564px', display: 'block' }, 'title');
+    tl.to('.image', { position: 'absolute' }, 'title');
+
+    // TODO: calculate images widths based on grids width (see imageList() function)
     tl.to('.image1', { x: '36.51vw', y: (1564 * 21.74) / 100, height: '256px', duration }, 'title');
     tl.to('.image2', { x: '40px', y: (1564 * 53.07) / 100, height: '634px', duration }, 'title');
     tl.to('.image3', { x: '60.85vw', y: (1564 * 53.07) / 100, height: '223px', duration }, 'title');
