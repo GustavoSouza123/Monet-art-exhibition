@@ -20,8 +20,8 @@ export default function Gallery() {
   useGSAP(() => {
     let tl = gsap.timeline({
       defaults: {
-        // duration: 4,
-        duration: 1,
+        duration: 4,
+        // duration: 1,
         ease: CustomEase.create('custom', 'M0,0 C0.907,0.183 0.117,0.984 1,0.997'),
       },
     });
@@ -45,9 +45,9 @@ export default function Gallery() {
           self.chars,
           {
             yPercent: 100,
-            // duration: 1.5,
-            duration: 0.1,
-            // stagger: 0.05,
+            duration: 1.5,
+            // duration: 0.1,
+            stagger: 0.05,
             ease: 'power2.inOut',
           },
           '0.5'
@@ -60,12 +60,14 @@ export default function Gallery() {
       {
         clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
         scale: 1.5,
-        stagger: 0.05, // 0.5
+        stagger: 0.5,
+        // stagger: 0.05,
       },
       {
         clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
         scale: 1,
-        stagger: 0.05, // 0.5
+        stagger: 0.5,
+        // stagger: 0.05,
       },
       '>-1'
     );
@@ -83,16 +85,16 @@ export default function Gallery() {
         top: 0,
         left: 0,
         transform: 'none',
-        // duration: 2,
-        duration: 0.1,
+        duration: 2,
+        // duration: 0.1,
         ease: 'power3.inOut',
       },
       'title'
     );
 
     tl.to('main#gallery', { padding: '100px 0', /*duration: 0.1*/ duration: 2 }, 'title');
-    // imagesGrid(tl);
-    // imagesList();
+
+    imagesGrid(tl, true);
 
     SplitText.create('.mask', {
       type: 'lines',
@@ -107,7 +109,7 @@ export default function Gallery() {
             stagger: 0.1,
             ease: 'power2.out',
           },
-          'title+0.5'
+          'title'
         );
       },
     });
@@ -149,9 +151,8 @@ export default function Gallery() {
 
   const imagesList = (timeline) => {
     document.querySelector('.nav .grid').classList.remove('active');
-    document.querySelector('.nav .list').classList.toggle('active');
+    document.querySelector('.nav .list').classList.add('active');
 
-    // const duration = 2;
     const duration = 1;
 
     const tl =
@@ -159,9 +160,23 @@ export default function Gallery() {
       gsap.timeline({
         defaults: {
           duration,
-          ease: CustomEase.create('custom', 'M0,0 C0.907,0.183 0.117,0.984 1,0.997'),
+          ease: 'power2.inOut',
         },
       });
+
+    const heights = [827, 861, 507, 1388, 447, 866, 944];
+    const gap = 300;
+    const galleryHeight = heights.reduce((acc, cur) => acc + cur, 0) + gap * (heights.length - 1);
+
+    tl.to('body', { autoAlpha: 0 });
+
+    tl.set('main .gallery', { height: galleryHeight + 'px', display: 'flex', alignItems: 'center', gap: gap + 'px' }, 'image');
+
+    document.querySelectorAll('.image').forEach((image, index) => {
+      tl.set(image, { position: 'static', height: heights[index], x: 0, y: 0 }, 'image');
+    });
+
+    tl.to('body', { autoAlpha: 1 }, '>');
 
     // const numCols = 8;
     // const colWidth = (window.innerWidth - 80) / numCols - 40;
@@ -170,26 +185,23 @@ export default function Gallery() {
     // };
     // const widths = [getGridWidth(6), getGridWidth(4), getGridWidth(2), getGridWidth(8), getGridWidth(4), getGridWidth(6), getGridWidth(4)];
 
-    const heights = [470, 895, 800, 872, 642, 512, 1084];
-    const gap = 50;
-    const galleryHeight = heights.reduce((acc, cur) => acc + cur, 0) + gap * (heights.length - 1);
-
-    tl.to('main .gallery', { height: galleryHeight + 'px', display: 'flex', alignItems: 'center', gap: '100px' }, 'image');
     // tl.to('main .gallery', { height: '3000px' }, 'image');
 
-    document.querySelectorAll('.image').forEach((image, index) => {
-      tl.to(image, { position: 'static', height: heights[index], x: 0, y: 0 }, 'image');
-      // tl.to(image, { width: widths[index], height: '100%', x: 0, y: 0 }, 'image');
-      // tl.to(image.firstChild, { width: '100%', height: 'auto' }, 'image');
-    });
+    // document.querySelectorAll('.image').forEach((image, index) => {
+    // 	tl.to(image, { width: widths[index], height: '100%', x: 0, y: 0 }, 'image');
+    // 	tl.to(image.firstChild, { width: '100%', height: 'auto' }, 'image');
+    // });
   };
 
-  const imagesGrid = (timeline) => {
+  const imagesGrid = (timeline, firstAnimation) => {
     document.querySelector('.nav .list').classList.remove('active');
-    document.querySelector('.nav .grid').classList.toggle('active');
+    document.querySelector('.nav .grid').classList.add('active');
 
-    // const duration = 2;
-    const duration = 1;
+    let duration = 2;
+
+    if (!firstAnimation) {
+      duration = 0;
+    }
 
     const tl =
       timeline ||
@@ -200,10 +212,11 @@ export default function Gallery() {
         },
       });
 
+    tl.to('body', { autoAlpha: 0, duration: 1 });
+
     tl.to('main .gallery', { height: '1564px', display: 'block' }, 'title');
     tl.to('.image', { position: 'absolute' }, 'title');
 
-    // TODO: calculate images widths based on grids width (see imageList() function)
     tl.to('.image1', { x: '36.51vw', y: (1564 * 21.74) / 100, height: '256px', duration }, 'title');
     tl.to('.image2', { x: '40px', y: (1564 * 53.07) / 100, height: '634px', duration }, 'title');
     tl.to('.image3', { x: '60.85vw', y: (1564 * 53.07) / 100, height: '223px', duration }, 'title');
@@ -211,6 +224,8 @@ export default function Gallery() {
     tl.to('.image5', { x: '48.68vw', y: (1564 * 86.51) / 100, height: '211px', duration }, 'title');
     tl.to('.image6', { x: '2.65vw', y: (1564 * 4.67) / 100, height: '267px', duration }, 'title');
     tl.to('.image7', { x: '82.54vw', y: (1564 * 67.33) / 100, height: '250px', duration }, 'title');
+
+    tl.to('body', { autoAlpha: 1, duration: 1 }, '>');
   };
 
   return (
